@@ -18,6 +18,10 @@ class Player_Date{
     public Player getPlayer() {
         return player;
     }
+
+    public String getDate() {
+        return date;
+    }
 }
 
 public class Main {
@@ -45,9 +49,7 @@ public class Main {
             {
                 gameDataWriter.write(player.getPlayer().getName());
                 gameDataWriter.write("\t" + player.getPlayer().getScore());
-                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-                Date date = new Date();
-                gameDataWriter.write("\t" + formatter.format(date));
+                gameDataWriter.write("\t" + player.getDate());
                 gameDataWriter.newLine();
             }
 
