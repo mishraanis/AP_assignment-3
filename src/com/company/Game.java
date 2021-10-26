@@ -1,7 +1,12 @@
 package com.company;
 
-import java.util.LinkedList;
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 public class Game {
     private final Floor []floors;
@@ -26,13 +31,12 @@ public class Game {
         player = new Player(player_name);
         dice = new Dice(2);
     }
-    void StartPlay(Scanner sc)
-    {
+    void StartPlay(BufferedReader br) throws IOException {
         System.out.println("The game setup is ready");
         while(player.getPosition() != 13)
         {
             System.out.println("Hit enter to roll the dice");
-            sc.nextLine();
+            br.readLine();
             int die_val = dice.getValue();
             System.out.println("Dice gave " + die_val);
             if(die_val == 1)
@@ -69,5 +73,11 @@ public class Game {
         }
         System.out.println("Game Over");
         System.out.println(player.getName() + " accumulated " + player.getScore() + " points");
+        BufferedWriter gameData = new BufferedWriter(new FileWriter("Game_Records.txt", true));
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        Date date = new Date();
+        gameData.write(player.getName() + "\t" + player.getScore() + "\t" + formatter.format(date));
+        gameData.newLine();
+        gameData.close();
     }
 }
