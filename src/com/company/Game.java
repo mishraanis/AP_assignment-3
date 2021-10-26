@@ -67,5 +67,7 @@ public class Game {
                 }
             }
         }
+        System.out.println("Game Over");
+        System.out.println(player.getName() + " accumulated " + player.getScore() + " points");
     }
 }
