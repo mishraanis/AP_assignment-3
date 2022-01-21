@@ -2,16 +2,20 @@ package com.company;
 
 import java.util.Comparator;
 
-class ScoreCompare implements Comparator<Player_Date>
+class ScoreCompare implements Comparator<Object>
 {
     @Override
-    public int compare(Player_Date p1, Player_Date p2) {
-        return p2.getPlayer().getScore() - p1.getPlayer().getScore();
+    public int compare(Object p1, Object p2) {
+        if(p1 instanceof Player_Date fp && p2 instanceof Player_Date sp){
+            return sp.getPlayer().getScore() - fp.getPlayer().getScore();
+        }
+        else
+            return -1;
     }
 }
-
+//Comparable
 public class Player {
-    private String name;
+    private final String name;
     private int position;
     private int score;
 

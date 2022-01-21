@@ -3,18 +3,12 @@ package com.company;
 public class Empty_Floor extends Floor{
     Empty_Floor(int location)
     {
-        this.location = location;
-        this.point = 1;
+        super(location, 1);
     }
 
     @Override
     public String toString() {
         return "has reached an Empty Floor";
-    }
-
-    @Override
-    int getPoint() {
-        return this.point;
     }
 
     @Override
